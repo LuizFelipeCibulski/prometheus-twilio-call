@@ -41,3 +41,14 @@ curl -X POST \
       }' \
   http://<IP>:<PORT>/alert
 ~~~
+
+-----
+
+## Integration on AlertManager
+
+~~~
+- name: twiliocall
+  webhook_configs:
+     - url: '<IP/SERVICE>:5000/alert'
+~~~
+

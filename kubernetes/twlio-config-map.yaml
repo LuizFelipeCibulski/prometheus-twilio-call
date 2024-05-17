@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: twilio-configmap
+data:
+  ACCOUNT_SID: "<YOUR-ACCOUNT-SID>"
+  AUTH_TOKEN: "<YOUR-AUTH-TOKEN>"
+  FROM_NUMBER: "<YOUR-FROM-NUMBER>"
+  TO_NUMBERS: "['+999999999999', '+999999999999', '+999999999999' ,'+999999999999', '+999999999999']"

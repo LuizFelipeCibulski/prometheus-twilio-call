@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twilio-integration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: twilio-integration
+  template:
+    metadata:
+      labels:
+        app: twilio-integration
+    spec:
+      containers:
+        - name: twilio-integration
+          image: tibursio/prometheus-twilio-call:10.18
+          ports:
+            - containerPort: 5000
+          env:
+            - name: ACCOUNT_SID
+              valueFrom:
+                configMapKeyRef:
+                  name: twilio-configmap
+                  key: ACCOUNT_SID
+            - name: AUTH_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: twilio-configmap
+                  key: AUTH_TOKEN
+            - name: FROM_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: twilio-configmap
+                  key: FROM_NUMBER
+            - name: TO_NUMBERS
+              valueFrom:
+                configMapKeyRef:
+                  name: twilio-configmap
+                  key: TO_NUMBERS
